@@ -169,6 +169,8 @@ io.on('connection', socket => {
                   io.sockets.in(this.roomName).emit('freeLetter', freeLetter)
                 }
                 if (this.currentGame.time < 0) {
+                  // Show the users what word it was
+                  socket.emit('guessed', this.currentGame.word)
                   this.endGame()
                 }
               }
